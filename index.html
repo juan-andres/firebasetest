@@ -1,0 +1,29 @@
+<body>
+
+<h1 id="counter">0</h1>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+<script>
+
+  // TODO move secret vars to env file
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "", // get from firebase app
+    authDomain: "juanandrestest.firebaseapp.com",
+    databaseURL: "https://juanandrestest.firebaseio.com",
+    storageBucket: "juanandrestest.appspot.com",
+    messagingSenderId: "" // get from firebase app
+  };
+  firebase.initializeApp(config);
+
+  var $counter = document.getElementById('counter');
+
+  var dbRef = firebase.database().ref().child('text');
+  dbRef.on('value', function(v) {
+    $counter.innerText = v.val();
+  })
+
+</script>
+
+</body>
